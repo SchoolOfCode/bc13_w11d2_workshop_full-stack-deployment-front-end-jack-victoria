@@ -28,7 +28,7 @@ function App() {
 // HARD CODED to true to tewst that the skeleton is in place!!!
  async function updateDatabaseStatus(itemId){
   console.log("updateDatabaseStatus called")
-    const response = await fetch(`${url}/items`, {
+    const response = await fetch(`${url}/items/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: itemId, completed: true }),
