@@ -64,6 +64,15 @@ function App() {
     });
   }
 
+// ADD to the above the TICK ITEM function above:
+// patch fetch requests:
+// const response = await fetch(`${url}/items`, {
+//   method: "PATCH",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify({ id: idOfTickedItem, completed: !item.completed }),
+// });
+
+  
   return (
     <section>
       <InputList addToList={addToList} buttonText={"Add To List"} />
