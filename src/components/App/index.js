@@ -24,6 +24,16 @@ function App() {
     getShoppingList();
   }, []);
 
+
+// HARD CODED to true to tewst that the skeleton is in place!!!
+ async function updateDatabaseStatus(itemId){
+    const response = await fetch(`${url}/items`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: itemId, completed: true }),
+      });
+  }
+  
   async function addToList(newListItem) {
     //This function changes the state of the list by pushing the text from the input field in to the array.
     const listItemWithoutId = {
@@ -56,6 +66,8 @@ function App() {
 
   function tickItem(idOfTickedItem) {
 
+    updateDatabaseStatus(idOfTickedItem);
+
     setList((previous) => {
       return previous.map((item) => {
         return item.id !== idOfTickedItem
@@ -65,15 +77,7 @@ function App() {
     });
   }
 
-// ADD to the above the TICK ITEM function above:
-// patch fetch requests:
-// const response = await fetch(`${url}/items`, {
-//   method: "PATCH",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ id: idOfTickedItem, completed: !item.completed }),
-// });
 
-  function updateDatabaseStatus(){
   return (
     <section>
       <InputList addToList={addToList} buttonText={"Add To List"} />
