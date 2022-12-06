@@ -66,7 +66,7 @@ function App() {
   }
 
   function tickItem(idOfTickedItem) {
-
+    console.log("tickItem called")
     updateDatabaseStatus(idOfTickedItem);
 
     setList((previous) => {
