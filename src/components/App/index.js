@@ -55,6 +55,7 @@ function App() {
   }
 
   function tickItem(idOfTickedItem) {
+
     setList((previous) => {
       return previous.map((item) => {
         return item.id !== idOfTickedItem
@@ -72,7 +73,7 @@ function App() {
 //   body: JSON.stringify({ id: idOfTickedItem, completed: !item.completed }),
 // });
 
-  
+  function updateDatabaseStatus(){
   return (
     <section>
       <InputList addToList={addToList} buttonText={"Add To List"} />
