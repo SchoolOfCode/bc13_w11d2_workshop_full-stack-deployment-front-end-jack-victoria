@@ -24,17 +24,16 @@ function App() {
     getShoppingList();
   }, []);
 
-
-// HARD CODED to true to tewst that the skeleton is in place!!!
- async function updateDatabaseStatus(itemId){
-  console.log("updateDatabaseStatus called")
+  // HARD CODED to true to tewst that the skeleton is in place!!!
+  async function updateDatabaseStatus(itemId) {
+    console.log("updateDatabaseStatus called");
     const response = await fetch(`${url}/items/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: itemId, completed: true }),
-      });
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: itemId, completed: !completed }),
+    });
   }
-  
+
   async function addToList(newListItem) {
     //This function changes the state of the list by pushing the text from the input field in to the array.
     const listItemWithoutId = {
@@ -66,7 +65,7 @@ function App() {
   }
 
   function tickItem(idOfTickedItem) {
-    console.log("tickItem called")
+    console.log("tickItem called");
     updateDatabaseStatus(idOfTickedItem);
 
     setList((previous) => {
@@ -77,7 +76,6 @@ function App() {
       });
     });
   }
-
 
   return (
     <section>
